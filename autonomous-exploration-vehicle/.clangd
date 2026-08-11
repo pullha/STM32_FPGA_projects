@@ -1,0 +1,14 @@
+CompileFlags:
+  CompilationDatabase: build/Debug
+  Add:
+    - -DUSE_HAL_DRIVER
+    - -DSTM32F411xE
+    - -DDEBUG
+    - -IC:/STM32/Projects/Autonomous_Exploration_Vehicle/Core/Inc
+    - -IC:/STM32/Projects/Autonomous_Exploration_Vehicle/Drivers/STM32F4xx_HAL_Driver/Inc
+    - -IC:/STM32/Projects/Autonomous_Exploration_Vehicle/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
+    - -IC:/STM32/Projects/Autonomous_Exploration_Vehicle/Middlewares/Third_Party/FreeRTOS/Source/include
+    - -IC:/STM32/Projects/Autonomous_Exploration_Vehicle/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS
+    - -IC:/STM32/Projects/Autonomous_Exploration_Vehicle/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F
+    - -IC:/STM32/Projects/Autonomous_Exploration_Vehicle/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    - -IC:/STM32/Projects/Autonomous_Exploration_Vehicle/Drivers/CMSIS/Include

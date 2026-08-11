@@ -1,0 +1,17 @@
+CompileFlags:
+  Add:
+    - --target=arm-none-eabi
+    - -mcpu=cortex-m4
+    - -mfpu=fpv4-sp-d16
+    - -mfloat-abi=hard
+    - -std=c11
+    - -DUSE_HAL_DRIVER
+    - -DSTM32F411xE
+    - -DDEBUG
+    - -IC:/STM32/Projects/Elevator_F411/Core/Inc
+    - -IC:/STM32/Projects/Elevator_F411/Drivers/STM32F4xx_HAL_Driver/Inc
+    - -IC:/STM32/Projects/Elevator_F411/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
+    - >-
+      -IC:/STM32/Projects/Elevator_F411/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    - -IC:/STM32/Projects/Elevator_F411/Drivers/CMSIS/Include
+  CompilationDatabase: build/Debug

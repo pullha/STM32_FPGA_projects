@@ -1,0 +1,60 @@
+{
+    "cmake.cmakePath": "cube-cmake",
+    "cmake.useCMakePresets": "always",
+    "cmake.configureOnOpen": true,
+    "cmake.configurePreset": "Debug",
+    "cmake.buildPreset": "Debug",
+    "cmake.configureEnvironment": {
+        "PATH": "C:\\Users\\X\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin;C:\\Users\\X\\AppData\\Local\\stm32cube\\bundles\\ninja\\1.13.2+st.1\\bin;${env:PATH}"
+    },
+    "cmake.buildEnvironment": {
+        "PATH": "C:\\Users\\X\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin;C:\\Users\\X\\AppData\\Local\\stm32cube\\bundles\\ninja\\1.13.2+st.1\\bin;${env:PATH}"
+    },
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/Debug/compile_commands.json",
+    "C_Cpp.default.compilerPath": "C:\\Users\\X\\AppData\\Local\\stm32cube\\bundles\\gnu-tools-for-stm32\\14.3.1+st.2\\bin\\arm-none-eabi-gcc.exe",
+    "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.defines": [
+        "USE_HAL_DRIVER",
+        "STM32F411xE",
+        "DEBUG"
+    ],
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/Core/Inc",
+        "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
+        "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+        "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+        "${workspaceFolder}/Drivers/CMSIS/Include"
+    ],
+    "C_Cpp.default.intelliSenseMode": "windows-gcc-arm",
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}/build/Debug",
+        "--query-driver=C:/Users/X/AppData/Local/stm32cube/bundles/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-*"
+    ],
+    "stm32cube-ide-clangd.path": "cube",
+    "stm32cube-ide-clangd.arguments": [
+        "starm-clangd",
+        "--query-driver=C:/Users/X/AppData/Local/stm32cube/bundles/gnu-tools-for-stm32/14.3.1+st.2/bin/arm-none-eabi-*",
+        "--compile-commands-dir=C:/STM32/Projects/Elevator_F411/build/Debug"
+    ],
+    "stm32cube-ide-clangd.fallbackFlags": [
+        "--target=arm-none-eabi",
+        "-mcpu=cortex-m4",
+        "-mfpu=fpv4-sp-d16",
+        "-mfloat-abi=hard",
+        "-std=c11",
+        "-DUSE_HAL_DRIVER",
+        "-DSTM32F411xE",
+        "-DDEBUG",
+        "-IC:/STM32/Projects/Elevator_F411/Core/Inc",
+        "-IC:/STM32/Projects/Elevator_F411/Drivers/STM32F4xx_HAL_Driver/Inc",
+        "-IC:/STM32/Projects/Elevator_F411/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+        "-IC:/STM32/Projects/Elevator_F411/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+        "-IC:/STM32/Projects/Elevator_F411/Drivers/CMSIS/Include"
+    ],
+    "cmake.preferredGenerators": [
+        "Ninja"
+    ],
+    "cmake.configureArgs": [
+        "-DCMAKE_COMMAND=cube-cmake"
+    ]
+}

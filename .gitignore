@@ -1,0 +1,44 @@
+# STM32/CMake build outputs
+build/
+mx.scratch/
+*.elf
+*.map
+*.hex
+*.bin
+*.obj
+*.o
+*.su
+compile_commands.json
+build.ninja
+CMakeCache.txt
+
+# Vivado generated outputs and simulation caches
+*.jou
+*.log
+*.pb
+*.wdb
+*.dcp
+*.bit
+*.rpt
+*.rpx
+*.str
+*.xpe
+*.xsa
+*.hwdef
+*.ltx
+*.zip
+*.bak
+*.backup.*
+*.cache/
+*.runs/
+*.sim/
+xsim.dir/
+*/xsim.dir/
+*/utils_1/
+
+# Local/editor state
+.codex/
+.ssh/
+.git/
+.DS_Store
+Thumbs.db
