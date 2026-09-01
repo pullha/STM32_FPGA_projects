@@ -1,0 +1,56 @@
+/ {
+	amba_pl: amba_pl {
+		ranges;
+		compatible = "simple-bus";
+		#address-cells = <1>;
+		#size-cells = <1>;
+		firmware-name = "AXI_Smart_Sorter_wrapper.bit.bin";
+		clocking0: clocking0 {
+			compatible = "xlnx,fclk";
+			assigned-clocks = <&clkc 15>;
+			assigned-clock-rates = <100000000>;
+			#clock-cells = <0>;
+			clock-output-names = "fabric_clk";
+			clocks = <&clkc 15>;
+		};
+		camera_controller_0: camera_controller@43c10000 {
+			xlnx,rable = <0>;
+			xlnx,s00-axi-data-width = <32>;
+			compatible = "xlnx,camera-controller-1.0";
+			status = "okay";
+			clock-names = "s00_axi_aclk";
+			xlnx,s00-axi-addr-width = <4>;
+			xlnx,ip-name = "camera_controller";
+			xlnx,edk-iptype = "PERIPHERAL";
+			reg = <0x43c10000 0x10000>;
+			clocks = <&clkc 15>;
+			xlnx,name = "camera_controller_0";
+		};
+		servo_controller_0: servo_controller@43c20000 {
+			xlnx,rable = <0>;
+			xlnx,s00-axi-data-width = <32>;
+			compatible = "xlnx,servo-controller-1.0";
+			status = "okay";
+			clock-names = "s00_axi_aclk";
+			xlnx,s00-axi-addr-width = <4>;
+			xlnx,ip-name = "servo_controller";
+			xlnx,edk-iptype = "PERIPHERAL";
+			reg = <0x43c20000 0x10000>;
+			clocks = <&clkc 15>;
+			xlnx,name = "servo_controller_0";
+		};
+		sorting_controller_0: sorting_controller@43c00000 {
+			xlnx,rable = <0>;
+			xlnx,s00-axi-data-width = <32>;
+			compatible = "xlnx,sorting-controller-1.0";
+			status = "okay";
+			clock-names = "s00_axi_aclk";
+			xlnx,s00-axi-addr-width = <5>;
+			xlnx,ip-name = "sorting_controller";
+			xlnx,edk-iptype = "PERIPHERAL";
+			reg = <0x43c00000 0x10000>;
+			clocks = <&clkc 15>;
+			xlnx,name = "sorting_controller_0";
+		};
+	};
+};

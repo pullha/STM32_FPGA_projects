@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/FPGA/VitisWS/hello_world_LED/build",
+  "command": "C:\\Xilinx\\Vitis\\2024.2\\gnu\\riscv\\nt\\riscv64-unknown-elf\\bin\\riscv64-unknown-elf-gcc.exe -isystem C:/FPGA/VitisWS/platform_LED/export/platform_LED/sw/standalone_microblaze_riscv_0/include -isystem C:/Xilinx/Vitis/2024.2/gnu/riscv/nt/riscv64-unknown-elf/x86_64-w64-mingw32/usr/lib/riscv32-xilinx-elf/gcc/riscv32-xilinx-elf/13.3.0/include -isystem C:/Xilinx/Vitis/2024.2/gnu/riscv/nt/riscv64-unknown-elf/x86_64-w64-mingw32/usr/lib/riscv32-xilinx-elf/gcc/riscv32-xilinx-elf/13.3.0/include-fixed -isystem C:/Xilinx/Vitis/2024.2/gnu/riscv/nt/riscv64-unknown-elf/riscv32-xilinx-elf/usr/include  -O2 -march=rv32i_zicsr_zifencei -mabi=ilp32 -DSDT  -MMD -MP  -specs=C:/FPGA/VitisWS/platform_LED/export/platform_LED/sw/standalone_microblaze_riscv_0/Xilinx.spec -IC:/FPGA/VitisWS/platform_LED/export/platform_LED/sw/standalone_microblaze_riscv_0/include -Wall -Wextra      -O0  -g3     -U__clang__ \"-D__FILENAME__='__FILE__'\" -o CMakeFiles\\hello_world_LED.elf.dir\\helloworld.c.obj -c C:\\FPGA\\VitisWS\\hello_world_LED\\src\\helloworld.c",
+  "file": "C:\\FPGA\\VitisWS\\hello_world_LED\\src\\helloworld.c"
+},
+{
+  "directory": "C:/FPGA/VitisWS/hello_world_LED/build",
+  "command": "C:\\Xilinx\\Vitis\\2024.2\\gnu\\riscv\\nt\\riscv64-unknown-elf\\bin\\riscv64-unknown-elf-gcc.exe -isystem C:/FPGA/VitisWS/platform_LED/export/platform_LED/sw/standalone_microblaze_riscv_0/include -isystem C:/Xilinx/Vitis/2024.2/gnu/riscv/nt/riscv64-unknown-elf/x86_64-w64-mingw32/usr/lib/riscv32-xilinx-elf/gcc/riscv32-xilinx-elf/13.3.0/include -isystem C:/Xilinx/Vitis/2024.2/gnu/riscv/nt/riscv64-unknown-elf/x86_64-w64-mingw32/usr/lib/riscv32-xilinx-elf/gcc/riscv32-xilinx-elf/13.3.0/include-fixed -isystem C:/Xilinx/Vitis/2024.2/gnu/riscv/nt/riscv64-unknown-elf/riscv32-xilinx-elf/usr/include  -O2 -march=rv32i_zicsr_zifencei -mabi=ilp32 -DSDT  -MMD -MP  -specs=C:/FPGA/VitisWS/platform_LED/export/platform_LED/sw/standalone_microblaze_riscv_0/Xilinx.spec -IC:/FPGA/VitisWS/platform_LED/export/platform_LED/sw/standalone_microblaze_riscv_0/include -Wall -Wextra      -O0  -g3     -U__clang__ \"-D__FILENAME__='__FILE__'\" -o CMakeFiles\\hello_world_LED.elf.dir\\platform.c.obj -c C:\\FPGA\\VitisWS\\hello_world_LED\\src\\platform.c",
+  "file": "C:\\FPGA\\VitisWS\\hello_world_LED\\src\\platform.c"
+}
+]

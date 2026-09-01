@@ -1,0 +1,16 @@
+create libxil.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/xadcps/src/libxadcps.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/usbps/src/libusbps.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/uartps/src/libuartps.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/sdps/src/libsdps.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/scuwdt/src/libscuwdt.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/scutimer/src/libscutimer.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/scugic/src/libscugic.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/qspips/src/libqspips.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/gpiops/src/libgpiops.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/emacps/src/libemacps.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/dmaps/src/libdmaps.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/devcfg/src/libdevcfg.a
+addlib C:/FPGA/VitisWS/AXI_Smart_Sorter/zynq_fsbl/zynq_fsbl_bsp/libsrc/build_configs/gen_bsp/libsrc/coresightps_dcc/src/libcoresightps_dcc.a
+save
+end

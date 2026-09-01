@@ -1,0 +1,4 @@
+domain_path: C:\FPGA\VitisWS\platform_FND\export\platform_FND\sw\standalone_microblaze_riscv_0
+app_src_dir: C:\Xilinx\Vitis\2024.2\data\embeddedsw\lib\sw_apps\hello_world
+template: hello_world
+lang: c

@@ -1,0 +1,28 @@
+# Generated build/export output
+**/build/
+**/export/
+**/bsp/
+**/.Xil/
+**/.rigel_lopper/
+**/.codex_tmp/
+
+# Ignore object files and dependent files
+.o
+.d
+
+# Logs and IDE metadata
+**/logs/
+*.log
+*.jou
+**/_ide/logs/
+**/_ide/.wsdata/
+**/_ide_backup/
+
+#Ignore lock files
+.lock
+
+.bin
+.pdi
+.vitisWorkspace.json
+
+# Keep FPGA bitstreams (*.bit) explicitly tracked.

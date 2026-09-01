@@ -1,0 +1,55 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "tcf-debug",
+			"request": "launch",
+			"name": "hello_world_AXI_Smart_Sorter_app_hw_1",
+			"debugType": "baremetal-zynq",
+			"attachToRunningTargetOptions": {
+				"targetSetupMode": "standalone",
+				"executeScript": true,
+				"scriptPath": ""
+			},
+			"autoAttachProcessChildren": false,
+			"target": {
+				"targetConnectionId": "Local",
+				"peersIniPath": "../../_ide/.peers.ini",
+				"context": "zynq"
+			},
+			"pathMap": [],
+			"targetSetup": {
+				"resetSystem": true,
+				"programDevice": true,
+				"resetAPU": false,
+				"bitstreamFile": "C:\\FPGA\\VitisWS\\hello_world_AXI_Smart_Sorter\\_ide\\bitstream\\AXI_Smart_Sorter_wrapper.bit",
+				"zynqInitialization": {
+					"isFsbl": false,
+					"usingFSBL": {
+						"initWithFSBL": true,
+						"fsblFile": "${workspaceFolder}\\AXI_Smart_Sorter\\export\\AXI_Smart_Sorter\\sw\\boot\\fsbl.elf",
+						"fsblExitSymbol": "FsblHandoffJtagExit"
+					},
+					"usingPs7Init": {
+						"runPs7Init": true,
+						"runPs7PostInit": true,
+						"ps7InitTclFile": "C:\\FPGA\\VitisWS\\hello_world_AXI_Smart_Sorter\\_ide\\psinit\\ps7_init.tcl"
+					}
+				},
+				"downloadElf": [
+					{
+						"core": "ps7_cortexa9_0",
+						"resetProcessor": true,
+						"elfFile": "${workspaceFolder}\\hello_world_AXI_Smart_Sorter\\build\\hello_world_AXI_Smart_Sorter.elf",
+						"stopAtEntry": false
+					}
+				],
+				"crossTriggerBreakpoints": {
+					"isSelected": false,
+					"breakpoints": []
+				}
+			},
+			"internalConsoleOptions": "openOnSessionStart"
+		}
+	]
+}
