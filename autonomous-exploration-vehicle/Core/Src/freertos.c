@@ -25,6 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "can_probe.h"
 #include "moter.h"
 
 /* USER CODE END Includes */
@@ -36,12 +37,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-/* Turn calibration test that returns the car close to its starting heading. */
-#define MOTER_TEST_TURN_SPEED_PERCENT 45
-#define MOTER_TEST_START_DELAY_MS 2000
-#define MOTER_TEST_RIGHT_TURN_MS 5000
-#define MOTER_TEST_LEFT_TURN_MS 4700
-#define MOTER_TEST_STOP_MS 1000
+#define CAN_PROBE_INTERVAL_MS 10
 
 /* USER CODE END PD */
 
@@ -66,8 +62,6 @@ osThreadId defaultTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-static void MoterTest_RunCommand(MoterCommand command, int16_t percent, uint32_t duration_ms);
-static void MoterTest_UpdateDebug(void);
 
 /* USER CODE END FunctionPrototypes */
 
@@ -119,7 +113,7 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 512);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -140,53 +134,18 @@ void StartDefaultTask(void const * argument)
   /* USER CODE BEGIN StartDefaultTask */
   Moter_Init();
   Moter_Stop();
-  osDelay(MOTER_TEST_START_DELAY_MS);
-
-  /* The same command API will later be called from Raspberry Pi CAN messages. */
-  MoterTest_RunCommand(MOTER_COMMAND_TURN_RIGHT,
-                       MOTER_TEST_TURN_SPEED_PERCENT,
-                       MOTER_TEST_RIGHT_TURN_MS);
-  osDelay(MOTER_TEST_STOP_MS);
-
-  MoterTest_RunCommand(MOTER_COMMAND_TURN_LEFT,
-                       MOTER_TEST_TURN_SPEED_PERCENT,
-                       MOTER_TEST_LEFT_TURN_MS);
 
   /* Infinite loop */
   for(;;)
   {
+    CanProbe_Run();
     Moter_CommandUpdate();
-    MoterTest_UpdateDebug();
-    osDelay(1000);
+    osDelay(CAN_PROBE_INTERVAL_MS);
   }
   /* USER CODE END StartDefaultTask */
 }
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
-static void MoterTest_RunCommand(MoterCommand command, int16_t percent, uint32_t duration_ms)
-{
-  Moter_CommandStart(command, percent, duration_ms);
-
-  /* Update at 100 ms so timed commands can stop and PID can correct motion. */
-  while (Moter_CommandIsRunning() != 0U)
-  {
-    osDelay(100);
-    Moter_CommandUpdate();
-    MoterTest_UpdateDebug();
-  }
-}
-
-static void MoterTest_UpdateDebug(void)
-{
-  /* Keep the latest motor state visible in RAM for STM32CubeProgrammer reads. */
-  g_moter_debug_left_encoder = Moter_GetLeftEncoder();
-  g_moter_debug_right_encoder = Moter_GetRightEncoder();
-  g_moter_debug_pid_error = Moter_GetStraightPidError();
-  g_moter_debug_left_delta = Moter_GetStraightPidLeftDelta();
-  g_moter_debug_right_delta = Moter_GetStraightPidRightDelta();
-  g_moter_debug_left_pwm_x10 = Moter_GetLeftCommandPercentX10();
-  g_moter_debug_right_pwm_x10 = Moter_GetRightCommandPercentX10();
-}
 
 /* USER CODE END Application */

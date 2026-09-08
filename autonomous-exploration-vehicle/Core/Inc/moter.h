@@ -21,7 +21,8 @@ typedef enum
   MOTER_COMMAND_FORWARD = 1,
   MOTER_COMMAND_BACKWARD = 2,
   MOTER_COMMAND_TURN_LEFT = 3,
-  MOTER_COMMAND_TURN_RIGHT = 4
+  MOTER_COMMAND_TURN_RIGHT = 4,
+  MOTER_COMMAND_DIRECT_WHEEL = 100
 } MoterCommand;
 
 /* Low-level motor control. Percent range is -100 to 100. */
@@ -39,6 +40,8 @@ void Moter_MoveUpdate(void);
 
 /* Timed command runner: call Start once, then Update periodically. */
 void Moter_CommandStart(MoterCommand command, int16_t percent, uint32_t duration_ms);
+void Moter_StraightCommandStart(int16_t left_percent, int16_t right_percent, uint32_t duration_ms);
+void Moter_DirectCommandStart(int16_t left_percent, int16_t right_percent, uint32_t duration_ms);
 void Moter_CommandUpdate(void);
 uint8_t Moter_CommandIsRunning(void);
 MoterCommand Moter_GetActiveCommand(void);

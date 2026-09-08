@@ -171,6 +171,51 @@ void Moter_CommandStart(MoterCommand command, int16_t percent, uint32_t duration
   command_duration_ms = duration_ms;
 }
 
+void Moter_DirectCommandStart(int16_t left_percent, int16_t right_percent, uint32_t duration_ms)
+{
+  if (duration_ms == 0U)
+  {
+    Moter_Stop();
+    return;
+  }
+
+  straight_pid_enabled = 0;
+  Moter_SetBothSpeed(left_percent, right_percent);
+
+  active_command = MOTER_COMMAND_DIRECT_WHEEL;
+  command_running = 1;
+  command_start_tick = HAL_GetTick();
+  command_duration_ms = duration_ms;
+}
+
+void Moter_StraightCommandStart(int16_t left_percent, int16_t right_percent, uint32_t duration_ms)
+{
+  if ((duration_ms == 0U) || ((left_percent == 0) && (right_percent == 0)))
+  {
+    Moter_Stop();
+    return;
+  }
+
+  /* Refresh the watchdog window without resetting the PID state. */
+  if (command_running != 0U
+      && (active_command == MOTER_COMMAND_FORWARD || active_command == MOTER_COMMAND_BACKWARD)
+      && straight_base_left_x10 == Moter_ClampPercentX10((int16_t)(left_percent * 10))
+      && straight_base_right_x10 == Moter_ClampPercentX10((int16_t)(right_percent * 10)))
+  {
+    command_start_tick = HAL_GetTick();
+    command_duration_ms = duration_ms;
+    return;
+  }
+
+  Moter_StraightPidStart(left_percent, right_percent);
+  active_command = ((left_percent >= 0) && (right_percent >= 0))
+                     ? MOTER_COMMAND_FORWARD
+                     : MOTER_COMMAND_BACKWARD;
+  command_running = 1U;
+  command_start_tick = HAL_GetTick();
+  command_duration_ms = duration_ms;
+}
+
 void Moter_CommandUpdate(void)
 {
   uint32_t elapsed_ms;
@@ -223,13 +268,14 @@ uint32_t Moter_GetCommandRemainingMs(void)
 
 int32_t Moter_GetLeftEncoder(void)
 {
-  return (int32_t)Moter_ReadLeftEncoderRaw();
+  /* Logical left channel is TIM2; normalize forward motion to positive. */
+  return -(int32_t)Moter_ReadLeftEncoderRaw();
 }
 
 int32_t Moter_GetRightEncoder(void)
 {
-  /* The right encoder phase is reversed on this chassis, so normalize it here. */
-  return -(int32_t)(int16_t)Moter_ReadRightEncoderRaw();
+  /* Logical right channel is TIM1; forward motion already counts positive. */
+  return (int32_t)(int16_t)Moter_ReadRightEncoderRaw();
 }
 
 void Moter_ResetEncoders(void)
@@ -278,9 +324,11 @@ void Moter_StraightPidUpdate(void)
   current_right_raw = Moter_ReadRightEncoderRaw();
 
   /* Use delta counts per update period instead of total counts. */
-  straight_left_delta = (int32_t)(current_left_raw - straight_previous_left_raw);
+  /* TIM2 is the physical right wheel and counts backward during forward motion. */
+  straight_left_delta = -(int32_t)(current_left_raw - straight_previous_left_raw);
   right_raw_delta = (uint16_t)(current_right_raw - straight_previous_right_raw);
-  straight_right_delta = -(int32_t)(int16_t)right_raw_delta;
+  /* TIM1 is the physical left wheel and counts forward during forward motion. */
+  straight_right_delta = (int32_t)(int16_t)right_raw_delta;
 
   straight_previous_left_raw = current_left_raw;
   straight_previous_right_raw = current_right_raw;
