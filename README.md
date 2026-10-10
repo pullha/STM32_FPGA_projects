@@ -7,6 +7,7 @@ This repository collects three embedded projects in separate category folders.
 - `smart-farm/` - Vivado FPGA smart-farm project originally stored as `PID_test`.
 - `elevator/` - STM32F411 elevator controller project.
 - `autonomous-exploration-vehicle/` - STM32F411 autonomous exploration vehicle project, including Raspberry Pi helper tools.
+- `AXI_Smart_Sorter/` - Zynq SoC-based real-time sorting system using an OV7670 camera and custom AXI IP.
 
 ## Notes
 
